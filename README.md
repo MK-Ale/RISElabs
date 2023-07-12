@@ -82,10 +82,6 @@ To execute your code file, enter in the terminal window: `python seaslug.py`.
 
 Once `motor` is set correctly, let's develop this simulation further.
 
-<br>
-<br>
-<br>
-
 So far, our program only calculates a response at a single point in time. We have a snapshot, but what we really want is a whole video. We would like to model what happens with this gill over time.
 
 To incorporate the dimension of time into this program, we need to set up our simulation so that it takes in the sensory neuron activity at multiple points in time. At each time point, the program must calculate the motor neuron activity or output.
@@ -94,9 +90,6 @@ Ideally, we would store this information over time so that we can graph the acti
 
 Take a moment and brainstorm how we might model the relationship between the sensory and motor neurons over time in this program.
 
-<br>
-<br>
-<br>
 
 ## Simulating over time
 
