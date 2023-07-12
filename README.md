@@ -58,6 +58,10 @@ The `calculate_output` function should calculate the output by scaling the input
 
 Let's write code to define the function.
 
+<br>
+<br>
+<br>
+
 <details>
 <summary>spoiler "See Code"</summary>
 <pre>connweight = 4<br> <br>def calculate_output(input):<br>    return input*connweight</pre>
@@ -78,9 +82,9 @@ To execute your code file, enter in the terminal window: `python seaslug.py`.
 
 Once `motor` is set correctly, let's develop this simulation further.
 
-
-
-
+<br>
+<br>
+<br>
 
 So far, our program only calculates a response at a single point in time. We have a snapshot, but what we really want is a whole video. We would like to model what happens with this gill over time.
 
@@ -90,9 +94,9 @@ Ideally, we would store this information over time so that we can graph the acti
 
 Take a moment and brainstorm how we might model the relationship between the sensory and motor neurons over time in this program.
 
-
-
-
+<br>
+<br>
+<br>
 
 ## Simulating over time
 
@@ -104,17 +108,20 @@ If we want to run a simulation for, say, 30 time steps, we would need a way to s
 
 How might you update your `sensory` variable so that instead of it being set to 1 at a single point in time, it holds a series of 30 1's to represent being active the whole simulation?
 
-{% spoiler "See Code" %}
-```
-sensory = [1]*30
-```
-{% endspoiler %}
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>sensory = [1]*30</pre>
+</details>
+
+<br>
+<br>
+<br>
 
 After updating your `sensory` neuron so that it's on for 30 time steps in a row, let's consider a more interesting stimulation pattern.
 
-
-
-
+<br>
+<br>
+<br>
 
 Suppose our gill experienced a pattern of pulses rather than a single sustained touch. We might describe a pulse as taking place over 5 time steps, where the touch was only sensed during the middle time step.
 
@@ -122,15 +129,18 @@ We can create a different pattern of activity by setting the sensory neuron to r
 
 Update your code to assign the `sensory` neuron an activity of 6 pulses as described above.
 
-{% spoiler "See Code" %}
-```
-sensory = [0, 0, 1, 0, 0]*6
-```
-{% endspoiler %}
+<br>
+<br>
+<br>
 
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>sensory = [0, 0, 1, 0, 0]*6</pre>
+</details>
 
-
-
+<br>
+<br>
+<br>
 
 ## Moving through time
 Now we need to move through time, taking into account the activity of the sensory neuron at each time step and calculating the resulting motor neuron activity at each time step.
@@ -139,29 +149,19 @@ We can loop over each time step in the total duration that our simulation is mea
 
 Let's create a loop that iterates over each of the 30 time steps of our sensory neuron's activity.
 
-{% spoiler "Hints" %}
-There are multiple ways to accomplish this in python.
+<br>
+<br>
+<br>
 
-One is:
-1. Find the length of the `sensory` neuron activity list.
-2. Assign that length to a new variable, perhaps `num_time_steps`.
-3. Using a for loop, iterate over a `range` from 0 to `num_time_steps`
+<details>
+<summary>spoiler "See Code"</summary>
+There are multiple ways to accomplish this in python.<br><br>One is:<br>1. Find the length of the `sensory` neuron activity list.<br>2. Assign that length to a new variable, perhaps `num_time_steps`.<br>3. Using a for loop, iterate over a `range` from 0 to `num_time_steps`<br><br>Another would be to iterate directly over the sensory neuron's activity level at each time point, using a for loop.
+<pre>$ for timestep in range(0, len(sensory)):<br>    # do some stuff each time step</pre>
+</details>
 
-Another would be to iterate directly over the sensory neuron's activity level at each time point, using a for loop.
-
-{% spoiler "Code" %}
-
-```
-for timestep in range(0, len(sensory)):
-    # do some stuff each time step
-```
-{% endspoiler %}
-
-{% endspoiler %}
-
-
-
-
+<br>
+<br>
+<br>
 
 Once you have figured out how to access the activity of the sensory neuron at each point in time, you'll need to calculate the activity of the motor neuron at each point in time.
 
