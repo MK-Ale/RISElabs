@@ -28,7 +28,7 @@ Let's create a simplified model of the circuit involved in this reflex.
 
 Open seaslug.py to begin. 
 
-**Note:** it may be easier to work inside the regular CS50 code website instead of this sandbox. To do so, copy the contents of seaslug.py and paste into a new seaslug.py file within https://code.cs50.io .
+**Note:** you may work in a file called seaslug.py within https://code.cs50.io or on your own IDE.
 
 First, we'll create the variables to represent the reflex circuit.
 
