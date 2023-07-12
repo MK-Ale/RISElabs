@@ -210,20 +210,20 @@ Let's graph the sensory neuron and motor neuron activity separately. First, crea
 
 <details>
 <summary>spoiler "See Code"</summary>
-<pre>fig = plt.figure()<br>fig = plt.figure()<br>
-ax1 = fig.add_subplot(211)<br>
-ax1.plot(sensory)<br>
-ax1.set_ylabel('Sensory neuron activity')<br>
-ax1.set_xlim(0, len(sensory))<br>
-ax1.set_ylim(0, 1.1)<br>
-<br><br>
-ax2 = fig.add_subplot(212)<br>
-ax2.plot(motor)<br>
-ax2.set_xlabel('Time step')<br>
-ax2.set_ylabel('Motor neuron activity')<br>
-ax2.set_xlim(0, len(motor))<br>
-ax2.set_ylim(0, connweight+0.5)<br>
-<br><br>
+<pre>fig = plt.figure()
+ax1 = fig.add_subplot(211)
+ax1.plot(sensory)
+ax1.set_ylabel('Sensory neuron activity')
+ax1.set_xlim(0, len(sensory))
+ax1.set_ylim(0, 1.1)
+<br>
+ax2 = fig.add_subplot(212)
+ax2.plot(motor)
+ax2.set_xlabel('Time step')
+ax2.set_ylabel('Motor neuron activity')
+ax2.set_xlim(0, len(motor))
+ax2.set_ylim(0, connweight+0.5)
+<br>
 plt.show()</pre>
 </details>
 
