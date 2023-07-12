@@ -60,10 +60,12 @@ Let's write code to define the function.
 
 <details>
 <summary>spoiler "See Code"</summary>
-<pre>$ connweight = 4<br> <br>def calculate_output(input):<br>    return input*connweight</pre>
+<pre>connweight = 4<br> <br>def calculate_output(input):<br>    return input*connweight</pre>
 </details>
 
-
+<br>
+<br>
+<br>
 
 
 Now, let's use the function to calculate the value of motor.
