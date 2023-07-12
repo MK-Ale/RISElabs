@@ -153,7 +153,7 @@ Let's create a loop that iterates over each of the 30 time steps of our sensory 
 <details>
 <summary>spoiler "See Code"</summary>
 There are multiple ways to accomplish this in python.<br><br>One is:<br>1. Find the length of the `sensory` neuron activity list.<br>2. Assign that length to a new variable, perhaps `num_time_steps`.<br>3. Using a for loop, iterate over a `range` from 0 to `num_time_steps`<br><br>Another would be to iterate directly over the sensory neuron's activity level at each time point, using a for loop.
-<pre>$ for timestep in range(0, len(sensory)):<br>    # do some stuff each time step</pre>
+<pre>for timestep in range(0, len(sensory)):<br>    # do some stuff each time step</pre>
 </details>
 
 <br>
@@ -168,22 +168,25 @@ And each resulting motor neuron activity will need to be stored in such a way th
 
 Think of what you can do with the `motor` variable so that it can store the motor neuron activity levels from all 30 time points.
 
-{% spoiler "Hints" %}
-Either way, you'll need to turn your `motor` variable into a list.
+<br>
+<br>
+<br>
 
-You may wish to start out with an empty list and add new activity levels to the end as you compute them.
-
-Or you may create a placeholder with space for all time points ahead of time, and update the appropriate element in the list each time you calculate the activity at a particular time point.
-
+<details>
+<summary>spoiler "See Hints"</summary>
+Either way, you'll need to turn your `motor` variable into a list.<br><br>
+You may wish to start out with an empty list and add new activity levels to the end as you compute them.<br><br>
+Or you may create a placeholder with space for all time points ahead of time, and update the appropriate element in the list each time you calculate the activity at a particular time point.<br><br>
 If your for loop is iterating over a range, accessing the correct time point may be straightfoward. If you are iterating over each element, consider making use of the `enumerate` function.
+</details>
 
-{% endspoiler %}
+<br>
+<br>
+<br>
 
 Once you have a simulation that can run for 30 time steps, considering the sensory neuron activity at each step and calculating the resulting motor neuron activity, you are ready to graph your model.
 
-
-
-
+<br>
 
 ## Graphing the simulation
 
@@ -195,32 +198,38 @@ We can import this component with the command `import matplotlib.pyplot as plt`,
 
 The `as plt` part of the command gives a nickname to `matplotlib.pyplot`, so that rather than typing out that whole name each time we want to refer to a function from that package, we can just preface it with `plt`.
 
-
-
-
+<br>
+<br>
+<br>
 
 Let's graph the sensory neuron and motor neuron activity separately. First, create two horizontal subplots. Then, plot the sensory activity on the top graph and the motor activity on the bottom graph. By plotting a single variable in each plot, the independent variable will be automatically set to the time step of the simulation.
 
-{% spoiler "Code" %}
-```
-fig = plt.figure()
-ax1 = fig.add_subplot(211)
-ax1.plot(sensory)
-ax1.set_ylabel('Sensory neuron activity')
-ax1.set_xlim(0, len(sensory))
-ax1.set_ylim(0, 1.1)
+<br>
+<br>
+<br>
 
-ax2 = fig.add_subplot(212)
-ax2.plot(motor)
-ax2.set_xlabel('Time step')
-ax2.set_ylabel('Motor neuron activity')
-ax2.set_xlim(0, len(motor))
-ax2.set_ylim(0, connweight+0.5)
-    
-plt.show()
-```
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>fig = plt.figure()<br>fig = plt.figure()<br>
+ax1 = fig.add_subplot(211)<br>
+ax1.plot(sensory)<br>
+ax1.set_ylabel('Sensory neuron activity')<br>
+ax1.set_xlim(0, len(sensory))<br>
+ax1.set_ylim(0, 1.1)<br>
+<br><br>
+ax2 = fig.add_subplot(212)<br>
+ax2.plot(motor)<br>
+ax2.set_xlabel('Time step')<br>
+ax2.set_ylabel('Motor neuron activity')<br>
+ax2.set_xlim(0, len(motor))<br>
+ax2.set_ylim(0, connweight+0.5)<br>
+<br><br>
+plt.show()</pre>
+</details>
 
-{% endspoiler %}
+<br>
+<br>
+<br>
 
 To see the graph, upon running `python seaslug.py` in the terminal, click the *Desktop* tab in your Lab window to show the figure. You may wish to click the full-screen icon in the upper right corner to fully view the figure. When done, click the little x on the figure itself to close the figure. Your python program will then complete and the terminal will display another prompt `$`.
 
@@ -228,9 +237,7 @@ To see the graph, upon running `python seaslug.py` in the terminal, click the *D
 
 Once you have examined your graph, let's enhance the model so that it can include the biological process of habituation.
 
-
-
-
+<br>
 
 ## Modeling habituation
 
@@ -240,9 +247,9 @@ We can represent this weakening of the connection between sensory and motor neur
 
 Take a moment to think of what we might change in our code to represent this change.
 
-
-
-
+<br>
+<br>
+<br>
 
 One candidate is our parameter `connweight`. We can reduce its value to weaken the link between the two neurons.
 
@@ -254,9 +261,9 @@ We can update this variable over the course of the simulation, depending on the 
 
 Initially, the value of `effconnweight` should be set to the value of `connweight`.
 
-
-
-
+<br>
+<br>
+<br>
 
 Now let's add code to update the value of effconnweight in response to activity of the sensory neuron.
 
@@ -267,27 +274,29 @@ Keep in mind:
 
 To start, add another variable, `habrate`, to represent the rate at which the reflex circuit habituates (or the rate at which the connection weakens), on a scale of 0 to 1 where 0 means no habituation ever occurs and 1 means instant, full disconnection of the circuit would occur.
 
-{% spoiler "Code" %}
-```
-habrate = .1
-effconnweight = connweight
+<br>
+<br>
+<br>
 
-# inside the for loop:
-    # after calculating the motor neuron output,
-    # if the sensory neuron is active at this time point
-    # decrement the effconnweight by the rate of habituation
-    effconnweight = (1 - habrate)*effconnweight
-
-
-```
-
-{% endspoiler %}
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>
+habrate = .1<br>
+effconnweight = connweight<br>
+<br><br>
+# inside the for loop:<br>
+    # after calculating the motor neuron output,<br>
+    # if the sensory neuron is active at this time point<br>
+    # decrement the effconnweight by the rate of habituation<br>
+    effconnweight = (1 - habrate)*effconnweight<br>
+</pre>
+</details>
 
 After updating the code, set the `habrate` to 0.3 and run your code. Observe the graphs - how are they different from previously?
 
-
-
-
+<br>
+<br>
+<br>
 
 ## Exploring the parameterspace
 
