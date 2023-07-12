@@ -281,14 +281,14 @@ To start, add another variable, `habrate`, to represent the rate at which the re
 <details>
 <summary>spoiler "See Code"</summary>
 <pre>
-habrate = .1<br>
-effconnweight = connweight<br>
-<br><br>
-# inside the for loop:<br>
-    # after calculating the motor neuron output,<br>
-    # if the sensory neuron is active at this time point<br>
-    # decrement the effconnweight by the rate of habituation<br>
-    effconnweight = (1 - habrate)*effconnweight<br>
+habrate = .1
+effconnweight = connweight
+<br>
+# inside the for loop:
+    # after calculating the motor neuron output,
+    # if the sensory neuron is active at this time point
+    # decrement the effconnweight by the rate of habituation
+    effconnweight = (1 - habrate)*effconnweight
 </pre>
 </details>
 
@@ -306,16 +306,20 @@ To make it easy to run the code multiple times, let's set the `habrate` variable
 
 Make sure to add the value of `habrate` to the title of your figure so that you can tell which rate of habituation led to which results.
 
-{% spoiler "Code" %}
-```
-ax1.set_title("Habituation: " + str(habrate))
-```
-{% endspoiler %}
+<br>
+<br>
+<br>
+
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>ax1.set_title("Habituation: " + str(habrate))</pre>
+</details>
+
+<br>
+<br>
+<br>
 
 Try running the simulation with several different rates of habituation.
-
-
-
 
 
 ## Check the Code
@@ -338,9 +342,9 @@ Once you are satisfied with your work, you can submit it. First, follow the step
 ```
 submit50 mbezaire/checks/main/rise/seaslug
 ```
-{% next "Optional Challenge" %}
 
-## Challenge
+
+## Optional Challenge
 
 For this program, we made several assumptions:
 * The stimulus (the actual touch on the gill) would consistently affect the activity of the sensory neuron
@@ -353,9 +357,8 @@ We also made simplifications, such as:
 
 Consider what you would need to add to this simulation to relinquish any of the assumptions above. Also consider how you could refine the model so that it is more realistic, addressing any of the simplifications listed.
 
-
-
-
+<br>
+<br>
 
 Now, try implementing your idea(s) in the program. You may need to add additional variables or functions in order to do so.
 
