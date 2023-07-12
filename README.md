@@ -101,6 +101,10 @@ If we want to run a simulation for, say, 30 time steps, we would need a way to s
 
 How might you update your `sensory` variable so that instead of it being set to 1 at a single point in time, it holds a series of 30 1's to represent being active the whole simulation?
 
+<br>
+<br>
+<br>
+
 <details>
 <summary>spoiler "See Code"</summary>
 <pre>sensory = [1]*30</pre>
