@@ -1,11 +1,14 @@
-<!-- https://lab.cs50.io/mbezaire/labs/rise/seaslug -->
 # Aplysia 
+
+This coding lab was created by Marianne Bezaire, PhD. 
 
 *Aplysia* is a simple sea slug with a gill located dorsally. Because the gill is fleshy and therefore vulnerable to predators, Aplysia must contract it when predators are near to avoid being eaten.
 
 <img title="Aplysia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Aplysia_californica%2C_dorsal.jpg/1280px-Aplysia_californica%2C_dorsal.jpg" width=400>
 
-{% next %}
+
+
+
 
 ## Gill withdrawal reflex
 
@@ -17,7 +20,9 @@ This reflex is made possible by a sensory neuron that receives the touch informa
 
 Let's create a simplified model of the circuit involved in this reflex.
 
-{% next %}
+
+
+
 
 ## Building the circuit
 
@@ -37,7 +42,9 @@ Let's define our variables first:
 sensory = 0
 motor = 0
 ```
-{% next %}
+
+
+
 
 We want to calculate the motor state as a function of the sensory input, perhaps by using a python function. The function would need to know the state of the sensory neuron as an input and would calculate and return the state of the motor neuron.
 
@@ -51,17 +58,13 @@ The `calculate_output` function should calculate the output by scaling the input
 
 Let's write code to define the function.
 
-{% spoiler "See Code" %}
+<details>
+<summary>spoiler "See Code"</summary>
+<pre>$ connweight = 4<br> <br>def calculate_output(input):<br>    return input*connweight</pre>
+</details>
 
-```
-connweight = 4
 
-def calculate_output(input):
-    return input*connweight
-```
-{% endspoiler %}
 
-{% next %}
 
 Now, let's use the function to calculate the value of motor.
 
@@ -73,7 +76,9 @@ To execute your code file, enter in the terminal window: `python seaslug.py`.
 
 Once `motor` is set correctly, let's develop this simulation further.
 
-{% next %}
+
+
+
 
 So far, our program only calculates a response at a single point in time. We have a snapshot, but what we really want is a whole video. We would like to model what happens with this gill over time.
 
@@ -83,7 +88,9 @@ Ideally, we would store this information over time so that we can graph the acti
 
 Take a moment and brainstorm how we might model the relationship between the sensory and motor neurons over time in this program.
 
-{% next %}
+
+
+
 
 ## Simulating over time
 
@@ -103,7 +110,9 @@ sensory = [1]*30
 
 After updating your `sensory` neuron so that it's on for 30 time steps in a row, let's consider a more interesting stimulation pattern.
 
-{% next %}
+
+
+
 
 Suppose our gill experienced a pattern of pulses rather than a single sustained touch. We might describe a pulse as taking place over 5 time steps, where the touch was only sensed during the middle time step.
 
@@ -117,7 +126,9 @@ sensory = [0, 0, 1, 0, 0]*6
 ```
 {% endspoiler %}
 
-{% next %}
+
+
+
 
 ## Moving through time
 Now we need to move through time, taking into account the activity of the sensory neuron at each time step and calculating the resulting motor neuron activity at each time step.
@@ -146,7 +157,9 @@ for timestep in range(0, len(sensory)):
 
 {% endspoiler %}
 
-{% next %}
+
+
+
 
 Once you have figured out how to access the activity of the sensory neuron at each point in time, you'll need to calculate the activity of the motor neuron at each point in time.
 
@@ -169,7 +182,9 @@ If your for loop is iterating over a range, accessing the correct time point may
 
 Once you have a simulation that can run for 30 time steps, considering the sensory neuron activity at each step and calculating the resulting motor neuron activity, you are ready to graph your model.
 
-{% next %}
+
+
+
 
 ## Graphing the simulation
 
@@ -181,7 +196,9 @@ We can import this component with the command `import matplotlib.pyplot as plt`,
 
 The `as plt` part of the command gives a nickname to `matplotlib.pyplot`, so that rather than typing out that whole name each time we want to refer to a function from that package, we can just preface it with `plt`.
 
-{% next %}
+
+
+
 
 Let's graph the sensory neuron and motor neuron activity separately. First, create two horizontal subplots. Then, plot the sensory activity on the top graph and the motor activity on the bottom graph. By plotting a single variable in each plot, the independent variable will be automatically set to the time step of the simulation.
 
@@ -212,7 +229,9 @@ To see the graph, upon running `python seaslug.py` in the terminal, click the *D
 
 Once you have examined your graph, let's enhance the model so that it can include the biological process of habituation.
 
-{% next %}
+
+
+
 
 ## Modeling habituation
 
@@ -222,7 +241,9 @@ We can represent this weakening of the connection between sensory and motor neur
 
 Take a moment to think of what we might change in our code to represent this change.
 
-{% next %}
+
+
+
 
 One candidate is our parameter `connweight`. We can reduce its value to weaken the link between the two neurons.
 
@@ -234,7 +255,9 @@ We can update this variable over the course of the simulation, depending on the 
 
 Initially, the value of `effconnweight` should be set to the value of `connweight`.
 
-{% next %}
+
+
+
 
 Now let's add code to update the value of effconnweight in response to activity of the sensory neuron.
 
@@ -263,7 +286,9 @@ effconnweight = connweight
 
 After updating the code, set the `habrate` to 0.3 and run your code. Observe the graphs - how are they different from previously?
 
-{% next %}
+
+
+
 
 ## Exploring the parameterspace
 
@@ -281,7 +306,9 @@ ax1.set_title("Habituation: " + str(habrate))
 
 Try running the simulation with several different rates of habituation.
 
-{% next %}
+
+
+
 
 ## Check the Code
 
@@ -318,7 +345,9 @@ We also made simplifications, such as:
 
 Consider what you would need to add to this simulation to relinquish any of the assumptions above. Also consider how you could refine the model so that it is more realistic, addressing any of the simplifications listed.
 
-{% next %}
+
+
+
 
 Now, try implementing your idea(s) in the program. You may need to add additional variables or functions in order to do so.
 
